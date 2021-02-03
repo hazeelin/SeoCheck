@@ -1,0 +1,38 @@
+﻿@model SeoCheckWeb.ViewModels.RankedUrlViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Seo Ranking Finder</h1>
+    <p></p>
+</div>
+
+
+<form method="get" asp-action="Index">
+    <div class="form-group">
+        <label for="keywords">Keywords:</label>
+        <input class="form-control" name="keywords" asp-for="KeywordsUsed" />
+
+        <label for="url">Url:</label>
+        <input class="form-control" name="url" asp-for="Url" />
+
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary" name="submit-button">Find Ranking Data</button>
+    </div>
+
+</form>
+
+@if (!(Model == null))
+{
+    <div class="results">
+        <h4>Ranking Search Results</h4>
+        <p>Url:&nbsp;&nbsp;&nbsp;@Model.Url</p>
+        <p>Keywords:&nbsp;&nbsp;&nbsp;@Model.KeywordsUsed</p>
+        <p>Total Occurrences:&nbsp;&nbsp;&nbsp;@Model.TotalOccurrences</p>
+        <p>List of Ranks:&nbsp;&nbsp;&nbsp;@Model.ListOfRanks</p>
+    </div>
+}
+
